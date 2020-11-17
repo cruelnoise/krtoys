@@ -1,4 +1,6 @@
-#define MAXLINES 1000
+#include <stdio.h>
+
+#define MAXLINES 200000
 #define MAXLEN 1000
 #define MEMSIZE MAXLINES * MAXLEN
 
