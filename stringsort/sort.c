@@ -4,7 +4,14 @@ void swap(char *v[], int i, int j);
 int strcmp(char str1[], char str2[]);
 
 void qsort(char *v[], int left, int right) {
+    static int sorted;
     int i, last;
+    if (sorted == 0) {
+        fprintf(stderr, "lines sorted: 000000");
+    }
+    sorted += 1;
+    fprintf(stderr, "\b\b\b\b\b\b%6d", sorted);
+
     if (left >= right) {
         return;
     }

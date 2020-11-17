@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 
 int get_line(char line[], int maxlen);
 void strcpy(char *to, char *from);
@@ -15,6 +14,10 @@ int read_lines(char *linebuf[], int maxlines) {
             return -1;
         }
         else {
+            if (len == 1) {
+                nlines -= 1;
+                continue;
+            }
             line[len - 1] = '\0'; // delete newline
             strcpy(p, line);
             linebuf[nlines] = p;
