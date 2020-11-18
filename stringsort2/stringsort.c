@@ -4,7 +4,7 @@
 #include <string.h>
 
 #define PTRBLOC 250 
-#define CHARBLOC 5000000 
+#define CHARBLOC 20000 
 #define MAXLEN 200 
 
 struct Bucket {
@@ -155,15 +155,14 @@ struct Bucket *read_to_tree(struct Bucket *n) {
     
     store = (char *)malloc(CHARBLOC);
     next = 0;
-    last = CHARBLOC;
     while ((len = get_line(line, MAXLEN)) > 0) {
         if (len == 1) {
             continue;
         }
 
-        while (next + len >= last) {
-            last += last;
-            store = (char *)realloc(store, last);
+        if (next + len >= CHARBLOC) {
+            store = (char *)malloc(CHARBLOC);
+            next = 0;
             if (store == NULL) {
                 return NULL;
             }
