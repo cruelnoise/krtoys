@@ -1,7 +1,6 @@
 #include "main.h"
 
 void swap(char *v[], int i, int j);
-int strcmp(char str1[], char str2[]);
 
 void qsort(char *v[], int left, int right) {
     static int sorted;
@@ -39,14 +38,4 @@ void swap(char *v[], int i, int j) {
     temp = v[i];
     v[i] = v[j];
     v[j] = temp;
-}
-
-int strcmp(char s[], char t[]) {
-   int i;
-   for (i = 0; s[i] == t[i]; i += 1) {
-       if (s[i] == '\0') {
-           return 0;
-       }
-   }
-   return s[i] - t[i];
 }

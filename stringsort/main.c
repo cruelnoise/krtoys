@@ -6,6 +6,7 @@ int main() {
     
     if ((nlines = read_lines(linebuf, MAXLINES)) >= 0) {
         qsort(linebuf, 0, nlines - 1);
+        printf("\n");
         write_lines(linebuf, nlines);
         return 0;
     }

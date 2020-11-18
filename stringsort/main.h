@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
 #define MAXLINES 200000
 #define MAXLEN 1000

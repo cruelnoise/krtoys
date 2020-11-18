@@ -1,7 +1,6 @@
 #include "main.h"
 
 int get_line(char line[], int maxlen);
-void strcpy(char *to, char *from);
 
 /* read lines until memory full or EOF */
 int read_lines(char *linebuf[], int maxlines) {
@@ -37,8 +36,17 @@ void write_lines(char *linebuf[], int nlines) {
 
 int get_line(char line[], int maxlen) {
     int i, c;
-    
-    for (i = 0; i < maxlen - 1 && (c = getchar()) != EOF && c != '\n'; i += 1) {
+    while ((isalnum(c = getchar())) == 0 && c != '\n' && c != EOF) {
+        ;
+    }
+    if (isalnum(c)) {
+        line[0] = c;
+        i = 1;
+    }
+    else {
+        i = 0;
+    }
+    for (; i < maxlen - 1 && (c = getchar()) != EOF && c != '\n'; i += 1) {
         line[i] = c;
     }
     if (c == '\n') {
@@ -49,10 +57,3 @@ int get_line(char line[], int maxlen) {
     return i;
 }
 
-void strcpy(char to[], char from[]) {
-    int i;
-    for (i = 0; from[i] != '\0'; i += 1) {
-        to[i] = from[i];
-    }
-    to[i] = '\0';
-}
